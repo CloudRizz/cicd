@@ -1,0 +1,32 @@
+name: Manual Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      python-version:
+        description: 'Choose Python version'
+        required: true
+        default: '3.10'
+        type: choice
+        options:
+          - '3.8'
+          - '3.9'
+          - '3.10'
+
+jobs:
+  manual-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ github.event.inputs.python-version }}
+
+      - name: Run tests
+        run: |
+          cd app
+          python -m unittest discover
