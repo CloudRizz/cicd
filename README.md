@@ -64,6 +64,18 @@ It builds a Docker image and pushes it to GitHub Container Registry.
 
 This creates a deployable container image automatically when changes are pushed to the main branch.
 
+### Security Checks Workflow
+
+The security checks workflow adds an additional security layer to the CI/CD process.
+
+It runs automatically on pushes and pull requests into the main branch.
+
+This workflow checks for hardcoded secrets and reviews GitHub Actions workflow files for common security issues.
+
+The purpose of this workflow is to reduce the risk of committing sensitive information such as API keys, tokens, passwords, or private keys into the repository.
+
+It also helps enforce safer GitHub Actions practices by checking workflow configuration for potential security weaknesses.
+
 ## CI/CD Concepts Demonstrated
 
 This project demonstrates the following CI/CD concepts:
