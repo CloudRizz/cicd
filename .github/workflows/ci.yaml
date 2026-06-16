@@ -1,0 +1,27 @@
+name: Basic CI Pipeline
+
+on: [push] # On pushing code to the repository, this workflow will be triggered.
+
+jobs:
+  build:
+    runs-on: ubuntu-latest # Creates a virtual machine with the latest version of Ubuntu to run the job.
+
+    steps:
+      - name: Checkout code # Downloads a copy of your repository on the runner.
+        uses: actions/checkout@v4
+
+      - name: Set up Python # Installs the specified version of Python on the runner.
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies # Installs the dependencies defined in requirements.txt.
+        run: |
+          cd app
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: Run unit tests # Runs the unit tests defined in the app directory.
+        run: |
+          cd app
+          python -m unittest discover
