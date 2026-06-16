@@ -1,4 +1,4 @@
-name: Basic CI Pipeline
+name: Lint Python Code
 
 on: [push]
 
