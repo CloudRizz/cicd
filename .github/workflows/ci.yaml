@@ -9,6 +9,8 @@ jobs:
     steps:
       - name: Checkout code # Downloads a copy of your repository on the runner.
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false # Ensures that the runner does not have access to the repository's credentials.
 
       - name: Set up Python # Installs the specified version of Python on the runner.
         uses: actions/setup-python@v5
